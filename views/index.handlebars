@@ -1,8 +1,10 @@
-<h2>Test Title</h2>
-<h2> Test Blog Post</h2>
+{{#each blogposts}}
 
-{{#each blogs as |post|}}
+<h2>{{blogposts.title}}</h2>
+<p>{{blogposts.post}}</p>
 
-{{post.title}}
+{{else}}
 
-{{/each}}
+    <p>No Current Blog Posts</p>
+
+{{/each}} 

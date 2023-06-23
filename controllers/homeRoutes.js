@@ -1,15 +1,14 @@
 const router = require('express').Router();
-const { BlogPost, User } = require('../models');
+const BlogPost = require('../models/BlogPost');
 // const withAuth = require('../utils/auth');
 
-router.get('/', (req, res) => {
-  BlogPost.findAll()
-    .then(blogposts => {
-      console.log(blogposts)
-      res.render('index');
+router.get('/', async (req, res) => {
+  const blogposts = await BlogPost.findAll();
+  console.log(blogposts);
+      // res.render('index', {
+      //   index: blogpost
+      // });
     })
-    .catch(err => console.log(err));
-})
 
 
 module.exports = router;
