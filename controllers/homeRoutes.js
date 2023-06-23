@@ -4,9 +4,15 @@ const User = require('../models/User');
 const withAuth = require('../utils/auth');
 
 router.get('/', (req, res) => {
-  BlogPost.findAll()
+  BlogPost.findAll({
+    include: [
+      {
+        model: User
+      }
+    ]
+  })
   .then (blogposts => {
-    console.log(blogposts)
+  
     res.render('index', { 
       blogposts
       });
@@ -15,7 +21,7 @@ router.get('/', (req, res) => {
 
 
 // Use withAuth middleware to prevent access to route
-router.get('/profile', withAuth, async (req, res) => {
+router.get('/profile', async (req, res) => {
   try {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
