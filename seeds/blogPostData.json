@@ -1,0 +1,21 @@
+[
+    {
+      "title": "Test Post",
+      "post": "This is where the post info goes",
+      "user_id": 1
+
+    },
+    {
+        "title": "Test Post2",
+        "post": "This is where the post info goes",
+        "user_id": 1
+  
+      },
+      {
+        "title": "Test Post3",
+        "post": "This is where the post info goes",
+        "user_id": 1
+  
+      }
+  ]
+  
