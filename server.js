@@ -8,7 +8,7 @@ const routes = require('./controllers');
 
 const db = require('./config/connection')
 
-
+// Use Public Folder
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Uses routes
