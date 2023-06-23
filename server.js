@@ -5,8 +5,27 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const PORT = process.env.PORT || 3001;
 const routes = require('./controllers');
-
+const session = require('express-session');
 const db = require('./config/connection')
+const SequelizeStore = require('connect-session-sequelize')(session.Store);
+const sequelize = require('./config/connection');
+
+const sess = {
+    secret: 'Super secret secret',
+    cookie: {
+      maxAge: 300000,
+      httpOnly: true,
+      secure: false,
+      sameSite: 'strict',
+    },
+    resave: false,
+    saveUninitialized: true,
+    store: new SequelizeStore({
+      db: sequelize
+    })
+  };
+  
+  app.use(session(sess));
 
 // Use Public Folder
 app.use(express.static(path.join(__dirname, 'public')));
@@ -30,6 +49,6 @@ app.listen(PORT, () => {
 
 //Database Connection Test
 
-db.authenticate()
+db.sync()
     .then(() => console.log('Database connected...'))
     .catch(err => console.log('Error: ' + err));

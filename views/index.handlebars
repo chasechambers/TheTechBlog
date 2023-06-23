@@ -1,7 +1,15 @@
-{{#each blogposts}}
+<h2>
 
-<h2>{{blogposts.title}}</h2>
-<p>{{blogposts.post}}</p>
+{{#each blogposts as |blog|}}
+
+<div class="list-group">
+  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">{{blog.dataValues.title}}</h5>
+      <small>3 days ago</small>
+    </div>
+    <p class="mb-1">{{blog.dataValues.post}}</p>
+    
 
 {{else}}
 
