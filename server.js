@@ -53,6 +53,7 @@ app.listen(PORT, () => {
     console.log('Server is starting at port ', PORT)
 });
 
-sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
-});
+
+sequelize.sync({ force: false})
+    .then(() => console.log('Database connected...'))
+    .catch(err => console.log('Error: ' + err));
