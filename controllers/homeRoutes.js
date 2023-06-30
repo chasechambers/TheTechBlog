@@ -35,14 +35,17 @@ router.get('/blog/:id', async (req, res) => {
           model: User,
           attributes: ['name'],
         },
-      ],
+        {
+          model: Comment
+          },
+      ]
     });
-    const commentData = await Comment.findAll();
+   
     const blog = blogData.get({ plain: true });
     // const comment = commentData.get({ plain: true})
      
     
-    console.log(commentData);
+    console.log(blog);
 
     res.render('blog', {
       ...blog,
