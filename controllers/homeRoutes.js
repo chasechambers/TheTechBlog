@@ -37,12 +37,18 @@ router.get('/blog/:id', async (req, res) => {
         },
       ],
     });
+    const commentData = await Comment.findAll();
     const blog = blogData.get({ plain: true });
+    // const comment = commentData.get({ plain: true})
+     
+    const comments = commentData.get({ plain: true })
+    console.log(comments);
+
     res.render('blog', {
       ...blog,
+      comments,
       logged_in: req.session.logged_in
     });
-    console.log();
   } catch (err) {
     res.status(500).json(err);
   }
