@@ -41,12 +41,11 @@ router.get('/blog/:id', async (req, res) => {
     const blog = blogData.get({ plain: true });
     // const comment = commentData.get({ plain: true})
      
-    const comments = commentData.get({ plain: true })
-    console.log(comments);
+    
+    console.log(commentData);
 
     res.render('blog', {
       ...blog,
-      comments,
       logged_in: req.session.logged_in
     });
   } catch (err) {
