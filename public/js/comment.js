@@ -4,9 +4,10 @@ const newCommentHandler = async (event) => {
     
     const comment = document.querySelector('#comment-desc').value.trim();
     const blog_id = document.querySelector('#blog_id').value;
-  
+    console.log(blog_id);
+    console.log(comment);
     if (comment) {
-      const response = await fetch(`/api/blog/${blog_id}`, {
+      const response = await fetch(`/api/comment`, {
         method: 'POST',
         body: JSON.stringify({ comment, blog_id }),
         headers: {
@@ -14,7 +15,7 @@ const newCommentHandler = async (event) => {
         },
       });
       if (response.ok) {
-        document.location.replace(`blog/${id}`);
+        document.location.replace(`/blog/${blog_id}`);
       } else {
         alert('Failed to create blog post');
       }
